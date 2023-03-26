@@ -1,10 +1,7 @@
 const numberContainer = document.querySelector('.container-numbers')
 const outPut = document.querySelector('.container-up-side-inner')
 const operatorButtons = document.querySelectorAll('.operator-button')
-
-
-
-//outPut.scroll(outPut.scrollWidth,0)
+let number = ''
 
 
 for(let i=9;i>0;i--){
@@ -12,18 +9,28 @@ for(let i=9;i>0;i--){
     button.classList.add('number-button')
     button.innerHTML = i
     numberContainer.appendChild(button)
-    button.addEventListener('click', returnNumber)
+    button.addEventListener('click', printNumber)
 }
 const zeroButton = document.querySelector('#zeroButton')
-zeroButton.addEventListener('click', returnNumber)
+zeroButton.addEventListener('click', printNumber)
 
 
-function returnNumber(){
-    
+function returnNumber(clickedNumber){
+    number += clickedNumber
+    console.log(number);
+    return number
 }
 
+function printNumber(){
+    let clickedNumber = this.innerHTML
+    returnNumber(clickedNumber)
+    outPut.innerHTML = number
+    scrollToRight()
+}
 
-
+function scrollToRight(){
+    outPut.scroll(outPut.scrollWidth,0)
+}
 
 
 
