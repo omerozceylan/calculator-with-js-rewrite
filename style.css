@@ -1,0 +1,163 @@
+body {
+    background-color:#3C4048;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;   
+    height: 90vh;
+    touch-action: pan-x pan-y;
+}
+*{
+    font-size: 30px;
+    font-family: 'Playfair Display', serif;
+    scroll-snap-align: end;
+    box-sizing: border-box;
+}
+
+button {
+    text-align: inherit;
+    border: none;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+}
+
+.container {
+    display: flex;
+    width: 320px;
+    flex-direction: column;
+    background-color: #1C191C;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    
+}
+
+.container-down {
+
+    display: flex;
+    flex-direction: row;
+}
+
+.container-up-side-inner{
+    white-space: nowrap;
+    
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    scroll-snap-type: mandatory;
+    font-size: 50px;
+    padding: 10px;
+    color: aliceblue;
+}
+
+.container-up-side-inner::-webkit-scrollbar{
+    display: none;
+}
+
+.container-numbers {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    width: 100%;
+    height: 160px;
+}
+
+.number-button {
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    border-top: 1px solid #777;
+    border-right: 1px solid #666; 
+    transition: 0.3s;
+    border-color: #1C191C;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.number-button:hover {
+    background-color: #E8C4C4;
+}
+
+.operators {
+    display: flex;
+    flex-direction: column;
+}
+
+.operator-button {
+    background-color: white;
+    border-color: #1C191C;
+    border-width: 2px;
+    border-style: solid;
+    color: black;
+    text-align: center;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    border-top: 1px solid #777;
+    border-right: 1px solid #666; 
+    transition: 0.3s;
+}
+
+.operator-button:hover {
+    background-color: #E8C4C4;
+}
+
+.splitted {
+    border-color: #1C191C;
+    border-width: 2px;
+    border-style: solid;
+    
+}
+
+.up-side-button-container {
+    display: flex;
+}
+
+.left-side {
+    height: 320px;
+}
+
+.container-of-numbers {
+
+    display: flex;
+    flex-direction: column;
+}
+
+.zeroButton {
+    width: 240px;
+
+}
+
+.right-button {
+    color: aliceblue;
+    background-color: #FB9617;
+    transition: 0.3s;
+    border-color: #1C191C;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.right-button:hover{
+    background-color: #e66026;
+}
+
+.text-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 60px;
+    margin-bottom: 50px;
+    color: #E8C4C4;
+    transition: 0.5s;
+}
+
