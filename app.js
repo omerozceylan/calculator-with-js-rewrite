@@ -1,36 +1,55 @@
-const numberContainer = document.querySelector('.container-numbers')
-const outPut = document.querySelector('.container-up-side-inner')
-const operatorButtons = document.querySelectorAll('.operator-button')
-let number = ''
+const numberContainer = document.querySelector(".container-numbers");
+const outPut = document.querySelector(".container-up-side-inner");
+const operatorButtons = document.querySelectorAll(".operator-button");
+const userOperators = document.querySelectorAll(".user-operators");
 
+let text = "";
 
-for(let i=9;i>0;i--){
-    let button = document.createElement('button')
-    button.classList.add('number-button')
-    button.innerHTML = i
-    numberContainer.appendChild(button)
-    button.addEventListener('click', printNumber)
+for (let i = 9; i > 0; i--) {
+  let button = document.createElement("button");
+  button.classList.add("number-button");
+  button.innerHTML = i;
+  numberContainer.appendChild(button);
+  button.addEventListener("click", addNumberToText);
 }
-const zeroButton = document.querySelector('#zeroButton')
-zeroButton.addEventListener('click', printNumber)
+const zeroButton = document.querySelector("#zeroButton");
+
+operatorButtons.forEach((element) => {
+  element.addEventListener("click", addOperatorToText);
+});
+
+zeroButton.addEventListener("click", addNumberToText);
 
 
-function returnNumber(clickedNumber){
-    number += clickedNumber
-    console.log(number);
-    return number
+
+function addNumberToText() {
+  let clickedNumber = this.innerHTML
+  text += clickedNumber;
+  printNumber()
+}
+
+function addOperatorToText(){
+  let opArr = ['/', '*', '-', '+']
+  if(!opArr.includes(text.charAt(text.length-1))){
+    text += this.innerHTML
+    printNumber()
+  } 
 }
 
 function printNumber(){
-    let clickedNumber = this.innerHTML
-    returnNumber(clickedNumber)
-    outPut.innerHTML = number
-    scrollToRight()
+  outPut.innerHTML = text;
 }
 
-function scrollToRight(){
-    outPut.scroll(outPut.scrollWidth,0)
+function scrollToRight() {
+  outPut.scroll(outPut.scrollWidth, 0);
 }
+
+
+
+
+
+
+
 
 
 
@@ -62,12 +81,12 @@ function scrollToRight(){
 // let isOperatorClicked = false
 // operatorButtons.forEach((element)=>{
 //     element.addEventListener('click',function(){
-        
+
 //         let op = this.innerHTML
 //         if(!isOperatorClicked==true){
 //             switch(op){
 //                 case '=':
-//                 case 'C':    
+//                 case 'C':
 //                     break
 //                 case '*':
 //                 case '/':
@@ -77,12 +96,12 @@ function scrollToRight(){
 //                     outPut.innerHTML=finalResult
 //                     outPut.scroll(outPut.scrollWidth,0)
 //                     isOperatorClicked=true
-//                     break       
+//                     break
 //             }
 //         }
 //         console.log(op)
 //         console.log(finalResult)
-        
+
 //     })
 // })
 
@@ -98,7 +117,7 @@ function scrollToRight(){
 //                 if(isStartWithZero==true){
 //                     finalResult=finalResult.slice(1,finalResult.length)
 //                     console.log(finalResult)
-//                     isStartWithZero=false  
+//                     isStartWithZero=false
 //                     outPut.innerHTML=finalResult
 //                     outPut.scroll(outPut.scrollWidth,0)
 //                 }else{
@@ -106,10 +125,9 @@ function scrollToRight(){
 //                     console.log(finalResult);
 //                 }
 //                 outPut.innerHTML=finalResult
-                
-//     }
-//     }
 
+//     }
+//     }
 
 // let cButton = document.querySelector('#cButton')
 // cButton.addEventListener('click', function(){
@@ -118,7 +136,7 @@ function scrollToRight(){
 //     outPut.innerHTML='0'
 //     if(alertDiv.firstChild){
 //         alertDiv.removeChild(alertDiv.firstChild)
-        
+
 //     }
 // })
 
