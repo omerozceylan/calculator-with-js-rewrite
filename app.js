@@ -20,7 +20,6 @@ operatorButtons.forEach((element) => {
 
 zeroButton.addEventListener("click", addNumberToText);
 
-// command
 
 function addNumberToText() {
   let clickedNumber = this.innerHTML
