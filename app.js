@@ -2,7 +2,9 @@ const numberContainer = document.querySelector(".container-numbers");
 const outPut = document.querySelector(".container-up-side-inner");
 const operatorButtons = document.querySelectorAll(".operator-button");
 const userOperators = document.querySelectorAll(".user-operators");
-
+const allOps = ["/", "*", "-", "+", "C", "?", "%", "="]
+const opArr = ["/", "*", "-", "+"];
+const opNotForPrint = ["C", "?", "%", "="];
 let text = "";
 
 for (let i = 9; i > 0; i--) {
@@ -20,23 +22,49 @@ operatorButtons.forEach((element) => {
 
 zeroButton.addEventListener("click", addNumberToText);
 
-// command
-
 function addNumberToText() {
-  let clickedNumber = this.innerHTML
+  let clickedNumber = this.innerHTML;
   text += clickedNumber;
-  printNumber()
+  printText();
+  scrollToRight();
 }
 
-function addOperatorToText(){
-  let opArr = ['/', '*', '-', '+']
-  if(!opArr.includes(text.charAt(text.length-1))){
-    text += this.innerHTML
-    printNumber()
-  } 
+function isLastCharOp(){
+  let lastChar =  text.charAt(text.length - 1)
+  if (allOps.includes(lastChar)){
+    return true
+  }else {
+    return false
+  }
 }
 
-function printNumber(){
+function anyOpInText(){
+  for( let i=0; i<allOps.length; i++ ){
+    let op = allOps[i]
+    let anyOpInText = text.indexOf(op)
+    console.log(anyOpInText)
+  }
+}
+
+let testButton = document.querySelector('.test')
+
+testButton.addEventListener('click',()=>{
+  anyOpInText()
+})
+
+function addOperatorToText() {
+  if (text == "") return;
+  if (
+    !isLastCharOp() &&
+    !opNotForPrint.includes(this.innerHTML)
+  ) {
+    text += this.innerHTML;
+  }
+  printText();
+  scrollToRight();
+}
+
+function printText() {
   outPut.innerHTML = text;
 }
 
@@ -44,36 +72,38 @@ function scrollToRight() {
   outPut.scroll(outPut.scrollWidth, 0);
 }
 
+userOperators.forEach((button) => {
+  button.addEventListener("click", handleUserOperations);
+});
+
+function handleUserOperations() {
+  let opButton = this.innerHTML;
+  switch (opButton) {
+    case "C":
+      clearText();
+      break;
+    case "?":
+      alert("Useless Button i'm sorry :)");
+      break;
+    case "=":
+      callculate();
+      break;
+    case "":
 
 
+  }
+}
 
+function clearText() {
+  text = "";
+  printText();
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function callculate() {
+  const result = eval(text);
+  text = result.toString();
+  printText();
+}
 
 
 // let finalResult='0'
@@ -169,3 +199,5 @@ function scrollToRight() {
 // })
 
 // outPut.scroll(0,outPut.scrollWidth)
+
+

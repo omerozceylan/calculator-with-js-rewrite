@@ -1,0 +1,12 @@
+{
+  "name": "callculator-rewrite",
+  "version": "1.0.0",
+  "description": "Every developer writes their own calculator. Mine is this one :)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
