@@ -92,12 +92,20 @@ function handleUserOperations() {
       alert("Useless Button i'm sorry :)");
       break;
     case "=":
-      callculate();
+      callculate(text);
       break;
-    case "":
-
+    case "%":
+      divideHundred()
+      break;
 
   }
+}
+
+function divideHundred(){
+  if(anyOpInText()) return
+  let result = text/100
+  text = result.toString()
+  printText()
 }
 
 function clearText() {
@@ -107,6 +115,7 @@ function clearText() {
 
 function callculate() {
   const result = eval(text);
+  console.log('result' + result);
   text = result.toString();
   printText();
 }
