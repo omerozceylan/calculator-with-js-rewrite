@@ -4,7 +4,7 @@ Every developer writes their own calculator. Mine is this one :)
 
 //i will rewrite my this old project js file. Because Why not? i just want it and i will do.
 
-old codes: 
+## old codes: 
 
 ```
 let numberContainer = document.querySelector('.container-numbers')
@@ -118,7 +118,7 @@ outPut.scroll(0,outPut.scrollWidth)
 
 ```
 
-rewrited: 
+## rewrited: 
 
 ```
 
