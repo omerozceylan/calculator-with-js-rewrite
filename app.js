@@ -5,7 +5,8 @@ const userOperators = document.querySelectorAll(".user-operators");
 const allOps = ["/", "*", "-", "+", "C", "?", "%", "="]
 const opArr = ["/", "*", "-", "+"];
 const opNotForPrint = ["C", "?", "%", "="];
-let text = "";
+let text = "0";
+printText()
 
 for (let i = 9; i > 0; i--) {
   let button = document.createElement("button");
@@ -24,7 +25,12 @@ zeroButton.addEventListener("click", addNumberToText);
 
 function addNumberToText() {
   let clickedNumber = this.innerHTML;
-  text += clickedNumber;
+  if(text.charAt(0)==0){
+    text = text.slice(1, text.length-1);
+    text += clickedNumber
+  }else{
+    text += clickedNumber;
+  }
   printText();
   scrollToRight();
 }
@@ -109,13 +115,12 @@ function divideHundred(){
 }
 
 function clearText() {
-  text = "";
+  text = "0";
   printText();
 }
 
 function callculate() {
   const result = eval(text);
-  console.log('result' + result);
   text = result.toString();
   printText();
 }
