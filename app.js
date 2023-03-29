@@ -39,18 +39,24 @@ function isLastCharOp(){
 }
 
 function anyOpInText(){
+  let count = 0
   for( let i=0; i<allOps.length; i++ ){
     let op = allOps[i]
     let anyOpInText = text.indexOf(op)
-    console.log(anyOpInText)
+    if(anyOpInText>=0){
+      count++
+    }
+  }
+  if(count>0){
+    return true
+  }else{
+    return false
   }
 }
 
-let testButton = document.querySelector('.test')
+// let testButton = document.querySelector('.test')
 
-testButton.addEventListener('click',()=>{
-  anyOpInText()
-})
+// testButton.addEventListener('click', anyOpInText)
 
 function addOperatorToText() {
   if (text == "") return;
